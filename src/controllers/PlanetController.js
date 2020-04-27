@@ -14,7 +14,7 @@ module.exports = {
     },
 
     async findPlanet(req, res){
-        const {id} = req.body;
+        const {id} = req.params;
         const planet = await Planet.findById(id);
         return res.json(planet);
     },
@@ -26,15 +26,15 @@ module.exports = {
     },
 
     async updatePlanet(req, res){
-        const {id} = req.body;
+        const {id} = req.params;
 
-        const Planet = await Planet.findOneAndUpdate(
-            {id}, 
+        const planet = await Planet.findOneAndUpdate(
+            {_id: id}, 
             {...req.body}, 
             {new: true},
         )
 
-        return res.json(Planet);
+        return res.json(planet);
     },
 
     async removePlanet(req, res){

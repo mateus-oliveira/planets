@@ -1,14 +1,13 @@
 const express = require('express');
-const multer  = require('multer');
 
 const PlanetController = require('./controllers/PlanetController');
 
-routes = express.Router();
+const routes = express.Router();
 
 routes.post('/create', PlanetController.createPlanet);
-routes.get('/find', PlanetController.findPlanet);
+routes.get('/find/:id', PlanetController.findPlanet);
 routes.get('/find_all', PlanetController.findAllPlanet);
-routes.put('/update', PlanetController.updatePlanet);
-routes.delete('/remove', PlanetController.removePlanet);
+routes.put('/update/:id', PlanetController.updatePlanet);
+routes.delete('/remove/:id', PlanetController.removePlanet);
 
-const routes = express.Router();
+module.exports = routes;
